@@ -9,6 +9,8 @@ const Header = () => {
   const { theme, setThemeMode } = useContext(ThemeContext);
   const [darkMode, setDarkMode] = useState(theme);
 
+  const [searchInput, setSearchInput] = useState("");
+
   useEffect(() => {
     setThemeMode(darkMode);
     console.log(darkMode);
@@ -26,7 +28,7 @@ const Header = () => {
       }
       style={{ width: "100%", position: "fixed", zIndex: 100 }}
     >
-      <Container>
+      <Container className>
         <Link to="/">
           <Navbar.Brand
             className={darkMode ? "text-dark-primary" : "text-light-primary"}
@@ -34,6 +36,7 @@ const Header = () => {
             <b>AC-Shop</b>
           </Navbar.Brand>
         </Link>
+
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">

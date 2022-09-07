@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { useThemeHook } from "../GlobalComponents/ThemeProvider";
 import { useCart } from "react-use-cart";
 import { BsCartPlus } from "react-icons/bs";
+import Swal from "sweetalert2";
 
 const ProductCard = (props) => {
   let { image, price, title } = props.data;
@@ -11,6 +12,23 @@ const ProductCard = (props) => {
 
   const addToCart = () => {
     addItem(props.data);
+
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1500,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.addEventListener("mouseenter", Swal.stopTimer);
+        toast.addEventListener("mouseleave", Swal.resumeTimer);
+      },
+    });
+
+    Toast.fire({
+      icon: "success",
+      title: "The product was added to the cart!",
+    });
   };
   return (
     <Card
@@ -31,9 +49,14 @@ const ProductCard = (props) => {
         }}
       >
         <div style={{ width: "9rem" }}>
-          <Card.Img variant="top" src={image} className="img-fluid" />
+          <Card.Img
+            variant="top"
+            src={image}
+            className="img-fluid bg-image hover-zoom"
+          />
         </div>
       </div>
+
       <Card.Body>
         <Card.Title
           style={{
@@ -45,7 +68,7 @@ const ProductCard = (props) => {
           {title}
         </Card.Title>
         <Card.Title>
-          $ <span className="h3">{price}</span>
+          $ <span className="h4">{price}</span>
         </Card.Title>
         <Button
           onClick={() => addToCart()}

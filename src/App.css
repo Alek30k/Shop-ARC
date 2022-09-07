@@ -1,6 +1,6 @@
 /* theme dark */
 .bg-black {
-  background-color: black;
+  background-color: rgb(39, 37, 37);
 }
 .bg-light-black {
   background-color: #262626 !important;
@@ -12,7 +12,7 @@
   color: #262626;
 }
 .bg-dark-primary {
-  background-color: #fcbc73 !important;
+  background-color: #efac60 !important;
 }
 .text-dark-primary {
   color: #fcbc73 !important;
