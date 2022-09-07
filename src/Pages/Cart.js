@@ -155,7 +155,7 @@ const Cart = () => {
               <Button
                 variant="danger"
                 className="m-2"
-                onClick={() => emptyCart(cartEmpty())}
+                onClick={() => emptyCart(cartEmpty(cartEmpty()))}
               >
                 <BsCartX size="1.7rem" />
                 Clear Cart
